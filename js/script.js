@@ -8,7 +8,14 @@
 */ 
 
 function addition() {
-	// your code goes here!
+	var val1 = parseInt(document.getElementById('additionInput1').value);
+    var val2 = parseInt(document.getElementById('additionInput2').value);
+
+    console.log(val1 + ' ' + val2);
+
+    var total = val1 + val2;
+
+    alert(total);
 }
 
 /* --------------------------------------------------------- */
@@ -28,7 +35,29 @@ function addition() {
 */ 
 
 function vowelCounter() {
-	// your code goes here!
+	var text = document.getElementById('vowelInput').value;
+    console.log(text);
+    var idx;
+    var count = 0;
+
+    for (idx = 0; idx < text.length; idx++) {
+        var letter = text.charAt(idx);
+        console.log(letter);
+        if (letter == 'a' || letter == 'e' || letter == 'i' ||
+            letter == 'o' || letter == 'u' ) {
+            count++;
+        }
+    }
+
+    console.log(count);
+
+    if (count == 1) {
+        document.getElementById('vowelInput').value =
+            'That sentence has 1 vowel in it.';
+    } else {
+        document.getElementById('vowelInput').value =
+            'That sentence has ' + count + ' vowels in it.';
+    }
 }
 
 /* --------------------------------------------------------- */
@@ -58,11 +87,26 @@ function vowelCounter() {
 	For extra functionality, track the number of guesses the user has made, and print that as part of the result.
 */ 
 
+var random = Math.floor(Math.random() * 100) + 1;
+var count = 0;
 function submit() {
-	
+    var guess = parseFloat(document.getElementById('numberGuess').value);
+    console.log(guess);
+    console.log(random);
+    count++;
+    if (guess > random) {
+        document.getElementById('numberResult').innerHTML = 'Lower! ' + 'Guesses: ' + count;
+    } else if (guess == random) {
+        document.getElementById('numberResult').innerHTML= 'YOU WON! ' + 'Guesses: ' + count;
+    } else {
+        document.getElementById('numberResult').innerHTML = 'Higher! ' + 'Guesses: ' + count;
+    }
 }
 
 function reset() {
+    random = parseInt(Math.floor((Math.random() * 100) + 1).value);
+    count = 0;
+    document.getElementById('numberResult').innerHTML = 'Your result will go here.';
 
 }
 
